@@ -43,6 +43,7 @@ export const Account: React.FC = () => {
                 src={user.photoURL}
                 alt={user.displayName || 'Profile'}
                 className="w-20 h-20 rounded-full object-cover border-2 border-orange-500"
+                referrerPolicy="no-referrer"
               />
             ) : (
               <div className="w-20 h-20 rounded-full bg-orange-500/20 flex items-center justify-center border-2 border-orange-500">
