@@ -1,17 +1,34 @@
 
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
+import { signInWithGoogle, signInWithEmail, signUpWithEmail, onAuthChange, User } from '../firebase';
 
 export const Login: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
   
+  const navigate = useNavigate();
   const formRef = useRef<HTMLDivElement>(null);
   const glow1Ref = useRef<HTMLDivElement>(null);
   const glow2Ref = useRef<HTMLDivElement>(null);
   const glow3Ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthChange((currentUser) => {
+      setUser(currentUser);
+      if (currentUser) {
+        // Redirect to home after successful login
+        setTimeout(() => navigate('/'), 1500);
+      }
+    });
+    return () => unsubscribe();
+  }, [navigate]);
 
   useEffect(() => {
     // Entrance animation for the form
@@ -65,6 +82,37 @@ export const Login: React.FC = () => {
     return () => ctx.revert();
   }, [isLogin]);
 
+  const handleEmailAuth = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    setLoading(true);
+
+    try {
+      if (isLogin) {
+        await signInWithEmail(email, password);
+      } else {
+        await signUpWithEmail(email, password);
+      }
+    } catch (err: any) {
+      setError(err.message || 'Authentication failed. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleAuth = async () => {
+    setError('');
+    setLoading(true);
+
+    try {
+      await signInWithGoogle();
+    } catch (err: any) {
+      setError(err.message || 'Google sign-in failed. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-stone-950 flex items-center justify-center relative overflow-hidden px-6 pt-20">
       {/* Enhanced Atmospheric Glow Elements */}
@@ -110,7 +158,21 @@ export const Login: React.FC = () => {
           />
         </div>
 
-        <form className="space-y-12" onSubmit={e => e.preventDefault()}>
+        <form className="space-y-12" onSubmit={handleEmailAuth}>
+          {/* Error Message */}
+          {error && (
+            <div className="p-4 bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-sans tracking-wider">
+              {error}
+            </div>
+          )}
+
+          {/* Success Message */}
+          {user && (
+            <div className="p-4 bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-sans tracking-wider text-center">
+              Welcome, {user.displayName || user.email}! Redirecting...
+            </div>
+          )}
+
           {!isLogin && (
             <div className="relative group">
               <input 
@@ -156,8 +218,12 @@ export const Login: React.FC = () => {
           </div>
 
           <div className="flex flex-col gap-6 pt-6">
-            <button className="w-full py-5 bg-orange-500 text-stone-950 font-sans font-bold tracking-[0.4em] uppercase text-[10px] hover:bg-stone-100 transition-all shadow-[0_10px_30px_rgba(249,115,22,0.3)] active:scale-[0.98]">
-              {isLogin ? 'Access the Void' : 'Begin Extraction'}
+            <button 
+              type="submit"
+              disabled={loading}
+              className="w-full py-5 bg-orange-500 text-stone-950 font-sans font-bold tracking-[0.4em] uppercase text-[10px] hover:bg-stone-100 transition-all shadow-[0_10px_30px_rgba(249,115,22,0.3)] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {loading ? 'Processing...' : isLogin ? 'Access the Void' : 'Begin Extraction'}
             </button>
             
             <div className="flex items-center gap-4 my-2">
@@ -167,7 +233,12 @@ export const Login: React.FC = () => {
             </div>
 
             {/* Google Login Button */}
-            <button className="w-full py-4 border border-stone-100/10 bg-stone-950/40 text-stone-100 font-sans tracking-[0.3em] uppercase text-[10px] flex items-center justify-center gap-4 hover:bg-stone-100 hover:text-stone-950 transition-all group active:scale-[0.98]">
+            <button 
+              type="button"
+              onClick={handleGoogleAuth}
+              disabled={loading}
+              className="w-full py-4 border border-stone-100/10 bg-stone-950/40 text-stone-100 font-sans tracking-[0.3em] uppercase text-[10px] flex items-center justify-center gap-4 hover:bg-stone-100 hover:text-stone-950 transition-all group active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
+            >
               <svg className="w-4 h-4 transition-colors" viewBox="0 0 24 24">
                 <path fill="currentColor" d="M12.48 10.92v3.28h7.84c-.24 1.84-.908 3.152-1.928 4.176-1.188 1.188-2.684 2.112-5.912 2.112-4.148 0-7.58-3.356-7.58-7.58s3.432-7.58 7.58-7.58c2.252 0 3.848.884 5.068 2.052l2.308-2.308c-1.96-1.832-4.516-2.924-7.376-2.924-6.224 0-11.28 5.056-11.28 11.28s5.056 11.28 11.28 11.28c3.412 0 6.008-1.128 8.128-3.336 2.112-2.112 2.78-5.116 2.78-7.664 0-.48-.04-.96-.12-1.42h-10.8z"/>
               </svg>
