@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brewinx Coffee</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            stone: {
+              950: '#0c0a09',
+            },
+            orange: {
+              500: '#f97316',
+              200: '#fed7aa',
+            }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          },
+          transitionTimingFunction: {
+            'expo': 'cubic-bezier(0.87, 0, 0.13, 1)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #0c0a09;
+      color: #f5f5f4; /* stone-100 */
+      overflow-x: hidden;
+    }
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    /* Atmospheric Soot Grain */
+    .grain {
+      position: fixed;
+      top: -150%;
+      left: -150%;
+      width: 300%;
+      height: 300%;
+      background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+      opacity: 0.04;
+      pointer-events: none;
+      z-index: 9999;
+      animation: noise 20s steps(10) infinite;
+    }
+    @keyframes noise {
+      0% { transform: translate(0,0); }
+      10% { transform: translate(-5%,-5%); }
+      20% { transform: translate(-10%,5%); }
+      30% { transform: translate(5%,-10%); }
+      40% { transform: translate(-5%,15%); }
+      50% { transform: translate(-10%,5%); }
+      60% { transform: translate(15%,0); }
+      70% { transform: translate(0,10%); }
+      80% { transform: translate(-15%,0); }
+      90% { transform: translate(10%,5%); }
+      100% { transform: translate(5%,0); }
+    }
+    canvas {
+      pointer-events: none;
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "gsap/": "https://esm.sh/gsap@^3.14.2/",
+    "gsap": "https://esm.sh/gsap@^3.14.2",
+    "lenis": "https://esm.sh/lenis@^1.3.17"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+  <div class="grain"></div>
+  <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
