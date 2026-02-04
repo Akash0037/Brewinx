@@ -207,8 +207,7 @@ export const Footer: React.FC = () => {
           {/* Outlined version for depth */}
           <span 
             className="absolute inset-0 flex justify-center text-transparent" 
-            style={{ WebkitTextStroke: '1px rgba(245, 245, 244, 0.04)' }}
-          >
+            style={{ WebkitTextStroke: '1px rgba(245, 245, 244, 0.04)' }}>
             BREWINX
           </span>
         </div>

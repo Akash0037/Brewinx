@@ -12,6 +12,7 @@ export interface Product {
     milk?: string[];
     sweetness?: string[];
     temperature?: string[];
+    toppings?: string[];
   };
 }
 

@@ -19,12 +19,12 @@ const App: React.FC = () => {
   return (
     <AppProvider>
       <SmoothScroll>
-        <div className="bg-stone-950 min-h-screen selection:bg-amber-500/90 selection:text-stone-950">
+        <div className="bg-stone-950 min-h-screen selection:bg-orange-500/90 selection:text-stone-950">
           <Navbar />
           <PageTransition />
           
           <main>
-            <Routes location={location} key={location.pathname}>
+            <Routes location={location}>
               <Route path="/" element={<Home />} />
               <Route path="/menu" element={<Menu />} />
               <Route path="/about" element={<About />} />

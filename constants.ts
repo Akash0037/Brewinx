@@ -8,7 +8,7 @@ export const PRODUCTS: Product[] = [
     description: 'A deep, charcoal-infused espresso with notes of obsidian and dark cocoa.',
     price: 450,
     category: 'Specialty',
-    image: '/images/menu/espresso.jpeg',
+    image: '/images/menu/Brewinx_Noir.png',
     options: {
       milk: ['None', 'Oat', 'Almond', 'Whole'],
       sweetness: ['None', 'Light', 'Regular']
@@ -20,7 +20,7 @@ export const PRODUCTS: Product[] = [
     description: 'Silky smooth espresso layered with house-made salted caramel and velvety oat milk foam.',
     price: 380,
     category: 'Specialty',
-    image: '/images/menu/latte.jpg',
+    image: '/images/menu/velvelt_caramel_latte.png',
     options: {
       milk: ['Oat', 'Almond', 'Whole'],
       sweetness: ['Light', 'Regular', 'Extra']
@@ -32,7 +32,7 @@ export const PRODUCTS: Product[] = [
     description: 'A decadent fusion of double-shot espresso poured over artisan vanilla gelato with toasted hazelnuts.',
     price: 420,
     category: 'Specialty',
-    image: '/images/menu/mocha.jpg',
+    image: '/images/menu/Hazelnut_Affogato.png',
     options: {
       toppings: ['Hazelnuts', 'Chocolate Shavings', 'Caramel Drizzle']
     }
@@ -43,7 +43,7 @@ export const PRODUCTS: Product[] = [
     description: 'Cold-steeped for 20 hours, infused with French lavender and drizzled with wildflower honey.',
     price: 350,
     category: 'Specialty',
-    image: '/images/menu/cold-brew.jpeg',
+    image: '/images/menu/Lavender_Honey_Cold_Brew.png',
     options: {
       milk: ['None', 'Oat', 'Almond'],
       sweetness: ['Light', 'Regular']
@@ -55,7 +55,7 @@ export const PRODUCTS: Product[] = [
     description: 'Bold espresso balanced with steamed milk, pure maple syrup, and a whisper of Ceylon cinnamon.',
     price: 320,
     category: 'Specialty',
-    image: '/images/menu/Cappuccino.jpeg',
+    image: '/images/menu/Maple_Cinnamon_Cortado.png',
     options: {
       milk: ['Whole', 'Oat', 'Almond'],
       sweetness: ['Light', 'Regular']
