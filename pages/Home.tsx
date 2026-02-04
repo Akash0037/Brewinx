@@ -132,7 +132,7 @@ export const Home: React.FC = () => {
           <div className="horizontal-item w-screen h-full flex items-center justify-center px-6 md:px-20 relative">
              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center max-w-7xl">
                 <div className="relative aspect-square md:aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl border border-stone-100/5">
-                  <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=1200" className="parallax-img w-full h-full object-cover scale-125" alt="Terroir" />
+                  <img src="https://images.unsplash.com/photo-1611070275666-75129f9574ef?auto=format&fit=crop&q=80&w=1200" className="parallax-img w-full h-full object-cover scale-125" alt="Terroir" />
                 </div>
                 <div className="parallax-text space-y-4 md:space-y-8 text-center md:text-left">
                   <span className="text-orange-500 text-[10px] md:text-xs font-black uppercase tracking-[0.4em]">01. The Terroir</span>
@@ -151,7 +151,7 @@ export const Home: React.FC = () => {
                   <p className="text-stone-400 text-sm md:text-lg font-light leading-relaxed tracking-wide">Our master roasters listen for the 'first crack' like a conductor listens for a symphony. Precision down to the millisecond.</p>
                 </div>
                 <div className="order-1 md:order-2 relative aspect-square md:aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl border border-stone-100/5">
-                  <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=1200" className="parallax-img w-full h-full object-cover scale-125" alt="Roast" />
+                  <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=1200" className="parallax-img w-full h-full object-cover scale-125" alt="Roast" />
                 </div>
              </div>
           </div>
@@ -160,7 +160,7 @@ export const Home: React.FC = () => {
           <div className="horizontal-item w-screen h-full flex items-center justify-center px-6 md:px-20">
              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center max-w-7xl">
                 <div className="relative aspect-square md:aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl border border-stone-100/5">
-                  <img src="https://images.unsplash.com/photo-1541167760496-16295cb7c726?auto=format&fit=crop&q=80&w=1200" className="parallax-img w-full h-full object-cover scale-125" alt="Pour" />
+                  <img src="https://images.unsplash.com/photo-1495774856032-8b90bbb32b32?auto=format&fit=crop&q=80&w=1200" className="parallax-img w-full h-full object-cover scale-125" alt="Pour" />
                 </div>
                 <div className="parallax-text space-y-4 md:space-y-8 text-center md:text-left">
                   <span className="text-orange-500 text-[10px] md:text-xs font-black uppercase tracking-[0.4em]">03. The Pour</span>
