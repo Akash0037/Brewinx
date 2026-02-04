@@ -107,6 +107,7 @@ export const Navbar: React.FC = () => {
                 <img 
                   src={user.photoURL} 
                   alt={user.displayName || 'Profile'} 
+                  referrerPolicy="no-referrer"
                   className={`w-8 h-8 rounded-full object-cover border-2 transition-all duration-300 ${
                     isActive('/account') ? 'border-orange-500' : 'border-stone-100/20 group-hover:border-orange-500'
                   }`}

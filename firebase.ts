@@ -12,7 +12,6 @@ import {
   User
 } from "firebase/auth";
 
-// Your web app's Firebase configuration from environment variables
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY as string,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN as string,
