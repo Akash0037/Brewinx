@@ -79,19 +79,19 @@ export const PageTransition: React.FC = () => {
       {/* Top Half Panel */}
       <div 
         ref={topPanelRef}
-        className="absolute top-0 left-0 w-full h-[50vh] bg-stone-950 border-b border-stone-100/5 transform -translate-y-full"
+        className="absolute top-0 left-0 w-full h-[50dvh] bg-stone-950 border-b border-stone-100/5 transform -translate-y-full"
       />
       {/* Bottom Half Panel */}
       <div 
         ref={bottomPanelRef}
-        className="absolute bottom-0 left-0 w-full h-[50vh] bg-stone-950 border-t border-stone-100/5 transform translate-y-full"
+        className="absolute bottom-0 left-0 w-full h-[50dvh] bg-stone-950 border-t border-stone-100/5 transform translate-y-full"
       />
       
       {/* Centered Assembly Text */}
-      <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
-        <div ref={textRef} className="flex gap-2">
+      <div className="absolute inset-0 flex items-center justify-center overflow-hidden px-4">
+        <div ref={textRef} className="flex gap-1 sm:gap-2">
           {"BREWINX".split("").map((letter, i) => (
-            <span key={i} className="text-stone-100 text-6xl md:text-9xl font-serif font-bold tracking-[0.15em]">
+            <span key={i} className="text-stone-100 text-4xl xs:text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-serif font-bold tracking-[0.1em] sm:tracking-[0.15em]">
               {letter}
             </span>
           ))}
