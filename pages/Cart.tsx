@@ -1,20 +1,44 @@
 
-import React from 'react';
-import { Minus, Plus, Trash2, ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { Minus, Plus, Trash2, ArrowRight, CheckCircle } from 'lucide-react';
 import { useApp } from '../context/AppContext.tsx';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const Cart: React.FC = () => {
-  const { cart, removeFromCart, updateQuantity } = useApp();
+  const { cart, removeFromCart, updateQuantity, placeOrder, user } = useApp();
+  const [orderPlaced, setOrderPlaced] = useState(false);
+  const navigate = useNavigate();
 
   const subtotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
   const tax = subtotal * 0.08;
   const total = subtotal + tax;
 
+  const handlePlaceOrder = () => {
+    if (!user) {
+      navigate('/login');
+      return;
+    }
+    placeOrder();
+    setOrderPlaced(true);
+    setTimeout(() => {
+      navigate('/account');
+    }, 2000);
+  };
+
+  if (orderPlaced) {
+    return (
+      <div className="min-h-screen bg-stone-950 pt-48 flex flex-col items-center px-6">
+        <CheckCircle className="w-20 h-20 text-green-500 mb-8" />
+        <h1 className="text-4xl md:text-6xl font-serif italic text-stone-100 mb-4 text-center">Order Placed Successfully!</h1>
+        <p className="text-stone-500 text-center mb-8">Redirecting to your orders...</p>
+      </div>
+    );
+  }
+
   if (cart.length === 0) {
     return (
       <div className="min-h-screen bg-stone-950 pt-48 flex flex-col items-center px-6">
-        <h1 className="text-6xl md:text-8xl font-serif italic text-stone-100 mb-12">The Altar is Empty.</h1>
+        <h1 className="text-6xl md:text-8xl font-serif italic text-stone-100 mb-12 text-center">The Altar is Empty.</h1>
         <Link 
           to="/menu"
           className="group relative px-12 py-5 border border-stone-100/20 text-stone-100 font-sans tracking-[0.3em] uppercase text-xs overflow-hidden"
@@ -83,10 +107,19 @@ export const Cart: React.FC = () => {
               </div>
             </div>
 
-            <button className="w-full mt-10 py-5 bg-orange-500 text-stone-950 font-sans font-bold tracking-[0.3em] uppercase text-xs flex items-center justify-center gap-4 hover:bg-stone-100 transition-colors">
-              Finalize Extraction
+            <button 
+              onClick={handlePlaceOrder}
+              className="w-full mt-10 py-5 bg-orange-500 text-stone-950 font-sans font-bold tracking-[0.3em] uppercase text-xs flex items-center justify-center gap-4 hover:bg-stone-100 transition-colors"
+            >
+              {user ? 'Finalize Extraction' : 'Login to Order'}
               <ArrowRight className="w-4 h-4" />
             </button>
+            
+            {!user && (
+              <p className="mt-4 text-orange-500/80 text-[10px] font-sans text-center uppercase tracking-widest">
+                Please login to place your order
+              </p>
+            )}
             
             <p className="mt-6 text-[10px] font-sans opacity-30 text-center uppercase tracking-widest leading-relaxed">
               *By finalizing, you acknowledge the high-extraction rituals performed by Brewinx.

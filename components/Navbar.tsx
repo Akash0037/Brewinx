@@ -6,7 +6,7 @@ import { useApp } from '../context/AppContext.tsx';
 import gsap from 'gsap';
 
 export const Navbar: React.FC = () => {
-  const { cart, isMenuOpen, setIsMenuOpen } = useApp();
+  const { cart, isMenuOpen, setIsMenuOpen, user } = useApp();
   const location = useLocation();
   const menuRef = useRef<HTMLDivElement>(null);
   const linksRef = useRef<HTMLDivElement>(null);
@@ -97,11 +97,38 @@ export const Navbar: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-4 md:gap-8">
-          <IconLink 
-            to="/login" 
-            className="hidden md:flex"
-            icon={<User className="w-5 h-5" />} 
-          />
+          {/* User Profile / Login Icon */}
+          <Link 
+            to={user ? "/account" : "/login"} 
+            className="hidden md:flex relative p-2 group flex-col items-center"
+          >
+            {user ? (
+              user.isGoogleUser && user.photoURL ? (
+                <img 
+                  src={user.photoURL} 
+                  alt={user.displayName || 'Profile'} 
+                  className={`w-8 h-8 rounded-full object-cover border-2 transition-all duration-300 ${
+                    isActive('/account') ? 'border-orange-500' : 'border-stone-100/20 group-hover:border-orange-500'
+                  }`}
+                />
+              ) : (
+                <div className={`w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-stone-950 font-bold text-sm transition-all duration-300 ${
+                  isActive('/account') ? 'ring-2 ring-orange-500 ring-offset-2 ring-offset-stone-950' : ''
+                }`}>
+                  {user.email?.charAt(0).toUpperCase() || 'U'}
+                </div>
+              )
+            ) : (
+              <div className={`transition-colors duration-500 ${isActive('/login') ? 'text-orange-500' : 'text-stone-100 group-hover:text-orange-500'}`}>
+                <User className="w-5 h-5" />
+              </div>
+            )}
+            <div 
+              className={`absolute -bottom-1 h-[2px] bg-orange-500 transition-all duration-700 ease-expo origin-center ${
+                isActive('/account') || isActive('/login') ? 'w-4 opacity-100' : 'w-0 opacity-0'
+              }`}
+            />
+          </Link>
           
           <div className="shopping-cart-icon relative">
             <IconLink 
@@ -142,7 +169,22 @@ export const Navbar: React.FC = () => {
           <Link to="/menu" className={`transition-colors ${isActive('/menu') ? 'text-orange-500 underline underline-offset-8 decoration-1' : 'hover:text-orange-500'}`}>The Collection</Link>
           <Link to="/about" className={`transition-colors ${isActive('/about') ? 'text-orange-500 underline underline-offset-8 decoration-1' : 'hover:text-orange-500'}`}>The Alchemy</Link>
           <Link to="/cart" className={`transition-colors ${isActive('/cart') ? 'text-orange-500 underline underline-offset-8 decoration-1' : 'hover:text-orange-500'}`}>The Ritual</Link>
-          <Link to="/login" className={`text-sm mt-6 font-sans uppercase tracking-[0.4em] font-bold transition-all ${isActive('/login') ? 'text-orange-500 opacity-100' : 'opacity-60 hover:opacity-100 hover:text-orange-500'}`}>Identity / Login</Link>
+          
+          {/* Mobile User Section */}
+          {user ? (
+            <Link to="/account" className={`flex items-center gap-4 text-sm mt-6 font-sans uppercase tracking-[0.4em] font-bold transition-all ${isActive('/account') ? 'text-orange-500 opacity-100' : 'opacity-60 hover:opacity-100 hover:text-orange-500'}`}>
+              {user.isGoogleUser && user.photoURL ? (
+                <img src={user.photoURL} alt="" className="w-8 h-8 rounded-full" />
+              ) : (
+                <div className="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-stone-950 font-bold text-sm">
+                  {user.email?.charAt(0).toUpperCase() || 'U'}
+                </div>
+              )}
+              Account
+            </Link>
+          ) : (
+            <Link to="/login" className={`text-sm mt-6 font-sans uppercase tracking-[0.4em] font-bold transition-all ${isActive('/login') ? 'text-orange-500 opacity-100' : 'opacity-60 hover:opacity-100 hover:text-orange-500'}`}>Identity / Login</Link>
+          )}
         </div>
       </div>
     </>

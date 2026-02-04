@@ -12,6 +12,7 @@ import { Menu } from './pages/Menu';
 import { About } from './pages/About';
 import { Cart } from './pages/Cart';
 import { Login } from './pages/Login';
+import { Account } from './pages/Account';
 
 const App: React.FC = () => {
   const location = useLocation();
@@ -30,6 +31,7 @@ const App: React.FC = () => {
               <Route path="/about" element={<About />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/account" element={<Account />} />
             </Routes>
           </main>
         </div>
