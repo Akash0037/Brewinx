@@ -5,6 +5,7 @@ import { AppProvider } from './context/AppContext';
 import { Navbar } from './components/Navbar';
 import { PageTransition } from './components/PageTransition';
 import { SmoothScroll } from './components/SmoothScroll';
+import { ProtectedRoute } from './components/ProtectedRoute';
 
 // Pages
 import { Home } from './pages/Home';
@@ -27,11 +28,11 @@ const App: React.FC = () => {
           <main>
             <Routes location={location}>
               <Route path="/" element={<Home />} />
-              <Route path="/menu" element={<Menu />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/cart" element={<Cart />} />
+              <Route path="/menu" element={<ProtectedRoute><Menu /></ProtectedRoute>} />
+              <Route path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
+              <Route path="/cart" element={<ProtectedRoute><Cart /></ProtectedRoute>} />
               <Route path="/login" element={<Login />} />
-              <Route path="/account" element={<Account />} />
+              <Route path="/account" element={<ProtectedRoute><Account /></ProtectedRoute>} />
             </Routes>
           </main>
         </div>
