@@ -98,9 +98,11 @@ export const Home: React.FC = () => {
       <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=2000" 
+            src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=60&w=1200" 
             className="hero-bg w-full h-full object-cover opacity-50 scale-110"
             alt="Brewinx Hero"
+            loading="eager"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-stone-950/80 via-transparent to-stone-950" />
         </div>
@@ -132,7 +134,7 @@ export const Home: React.FC = () => {
           <div className="horizontal-item w-screen h-full flex items-center justify-center px-6 md:px-20 relative">
              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center max-w-7xl">
                 <div className="relative aspect-square md:aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl border border-stone-100/5">
-                  <img src="https://img.freepik.com/premium-photo/close-up-falling-steaming-coffee-beans-selective-focus-concept-coffee-roasting-high-quality-products-vertical-view_193819-3500.jpg" className="parallax-img w-full h-full object-cover scale-125" alt="Terroir" />
+                  <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&q=60&w=800" className="parallax-img w-full h-full object-cover scale-125" alt="Terroir" loading="lazy" decoding="async" />
                 </div>
                 <div className="parallax-text space-y-4 md:space-y-8 text-center md:text-left">
                   <span className="text-orange-500 text-[10px] md:text-xs font-black uppercase tracking-[0.4em]">01. The Terroir</span>
@@ -151,7 +153,7 @@ export const Home: React.FC = () => {
                   <p className="text-stone-400 text-sm md:text-lg font-light leading-relaxed tracking-wide">Our master roasters listen for the 'first crack' like a conductor listens for a symphony. Precision down to the millisecond.</p>
                 </div>
                 <div className="order-1 md:order-2 relative aspect-square md:aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl border border-stone-100/5">
-                  <img src="https://images.pexels.com/photos/15389642/pexels-photo-15389642/free-photo-of-spices-in-bowl-in-machine.png?auto=compress&cs=tinysrgb&dpr=1&w=500" className="parallax-img w-full h-full object-cover scale-125" alt="Roast" />
+                  <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=60&w=800" className="parallax-img w-full h-full object-cover scale-125" alt="Roast" loading="lazy" decoding="async" />
                 </div>
              </div>
           </div>
@@ -160,7 +162,7 @@ export const Home: React.FC = () => {
           <div className="horizontal-item w-screen h-full flex items-center justify-center px-6 md:px-20">
              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center max-w-7xl">
                 <div className="relative aspect-square md:aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl border border-stone-100/5">
-                  <img src="https://img.freepik.com/premium-photo/black-coffee-cup-with-hot-coffee-smoke-rustic-wood-dark-food-style-photo-selective-focus_309761-4586.jpg?w=360" className="parallax-img w-full h-full object-cover scale-125" alt="Pour" />
+                  <img src="https://images.unsplash.com/photo-1495774856032-8b90bbb32b32?auto=format&fit=crop&q=60&w=800" className="parallax-img w-full h-full object-cover scale-125" alt="Pour" loading="lazy" decoding="async" />
                 </div>
                 <div className="parallax-text space-y-4 md:space-y-8 text-center md:text-left">
                   <span className="text-orange-500 text-[10px] md:text-xs font-black uppercase tracking-[0.4em]">03. The Pour</span>
