@@ -96,7 +96,7 @@ export const Navbar: React.FC = () => {
           <NavLink to="/about">About</NavLink>
         </div>
 
-        <div className="flex items-center gap-4 md:gap-8">
+        <div className="flex items-center gap-2 md:gap-1">
           {/* User Profile / Login Icon */}
           <Link 
             to={user ? "/account" : "/login"} 
