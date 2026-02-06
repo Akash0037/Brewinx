@@ -53,32 +53,32 @@ export const Account: React.FC = () => {
   if (!user) return null;
 
   return (
-    <div className="min-h-screen pt-24 pb-16 px-4">
+    <div className="min-h-screen pt-20 md:pt-24 pb-12 md:pb-16 px-3 md:px-4">
       <div ref={containerRef} className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold text-white mb-8">My Account</h1>
+        <h1 className="text-2xl md:text-4xl font-bold text-white mb-6 md:mb-8">My Account</h1>
 
         {/* Profile Section */}
-        <div className="bg-stone-900/50 backdrop-blur-sm rounded-2xl p-6 mb-8 border border-stone-800">
-          <div className="flex items-center gap-6">
+        <div className="bg-stone-900/50 backdrop-blur-sm rounded-xl md:rounded-2xl p-4 md:p-6 mb-6 md:mb-8 border border-stone-800">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6 text-center sm:text-left">
             {user.photoURL ? (
               <img
                 src={user.photoURL}
                 alt={user.displayName || 'Profile'}
-                className="w-20 h-20 rounded-full object-cover border-2 border-orange-500"
+                className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover border-2 border-orange-500 flex-shrink-0"
                 referrerPolicy="no-referrer"
               />
             ) : (
-              <div className="w-20 h-20 rounded-full bg-orange-500/20 flex items-center justify-center border-2 border-orange-500">
-                <span className="text-3xl text-orange-500">
+              <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-orange-500/20 flex items-center justify-center border-2 border-orange-500 flex-shrink-0">
+                <span className="text-2xl md:text-3xl text-orange-500">
                   {user.displayName?.charAt(0) || user.email?.charAt(0) || 'U'}
                 </span>
               </div>
             )}
-            <div>
-              <h2 className="text-2xl font-semibold text-white">
+            <div className="min-w-0">
+              <h2 className="text-xl md:text-2xl font-semibold text-white truncate">
                 {user.displayName || 'Coffee Lover'}
               </h2>
-              <p className="text-stone-400">{user.email}</p>
+              <p className="text-stone-400 text-sm md:text-base truncate">{user.email}</p>
               {user.isGoogleUser && (
                 <span className="inline-block mt-2 px-3 py-1 bg-stone-800 rounded-full text-xs text-stone-300">
                   Google Account
@@ -89,14 +89,14 @@ export const Account: React.FC = () => {
         </div>
 
         {/* Order History Section */}
-        <div className="bg-stone-900/50 backdrop-blur-sm rounded-2xl p-6 mb-8 border border-stone-800">
-          <h3 className="text-xl font-semibold text-white mb-4">Order History</h3>
+        <div className="bg-stone-900/50 backdrop-blur-sm rounded-xl md:rounded-2xl p-4 md:p-6 mb-6 md:mb-8 border border-stone-800">
+          <h3 className="text-lg md:text-xl font-semibold text-white mb-3 md:mb-4">Order History</h3>
           {orders.length === 0 ? (
-            <p className="text-stone-400">No orders yet. Start exploring our menu!</p>
+            <p className="text-stone-400 text-sm md:text-base">No orders yet. Start exploring our menu!</p>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-3 md:space-y-4">
               {orders.map((order) => (
-                <div key={order.id} className="bg-stone-800/50 rounded-xl p-4">
+                <div key={order.id} className="bg-stone-800/50 rounded-lg md:rounded-xl p-3 md:p-4">
                   <div className="flex justify-between items-start mb-2">
                     <span className="text-stone-300 text-sm">Order #{order.id.slice(-6)}</span>
                     <span className={`px-2 py-1 rounded-full text-xs ${
@@ -118,53 +118,53 @@ export const Account: React.FC = () => {
         </div>
 
         {/* Favorites Section */}
-        <div className="bg-stone-900/50 backdrop-blur-sm rounded-2xl p-6 mb-8 border border-stone-800">
-          <div className="flex items-center gap-2 mb-4">
-            <Heart className="w-5 h-5 text-orange-500" fill="#f97316" />
-            <h3 className="text-xl font-semibold text-white">My Favorites</h3>
+        <div className="bg-stone-900/50 backdrop-blur-sm rounded-xl md:rounded-2xl p-4 md:p-6 mb-6 md:mb-8 border border-stone-800">
+          <div className="flex items-center gap-2 mb-3 md:mb-4">
+            <Heart className="w-4 h-4 md:w-5 md:h-5 text-orange-500" fill="#f97316" />
+            <h3 className="text-lg md:text-xl font-semibold text-white">My Favorites</h3>
           </div>
           {favoriteProducts.length === 0 ? (
-            <div className="text-center py-8">
-              <Heart className="w-12 h-12 text-stone-700 mx-auto mb-3" />
-              <p className="text-stone-400 mb-4">No favorites yet. Add some from our menu!</p>
+            <div className="text-center py-6 md:py-8">
+              <Heart className="w-10 h-10 md:w-12 md:h-12 text-stone-700 mx-auto mb-3" />
+              <p className="text-stone-400 mb-4 text-sm md:text-base">No favorites yet. Add some from our menu!</p>
               <Link 
                 to="/menu" 
-                className="inline-block px-6 py-2 bg-orange-500 text-stone-950 font-semibold rounded-lg hover:bg-orange-400 transition-colors"
+                className="inline-block px-5 md:px-6 py-2 bg-orange-500 text-stone-950 font-semibold rounded-lg hover:bg-orange-400 transition-colors text-sm md:text-base"
               >
                 Explore Menu
               </Link>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-3 md:gap-4">
               {favoriteProducts.map((product) => (
                 <div 
                   key={product.id} 
-                  className="bg-stone-800/50 rounded-xl p-4 flex gap-4 group cursor-pointer hover:bg-stone-800/70 transition-colors"
+                  className="bg-stone-800/50 rounded-lg md:rounded-xl p-3 md:p-4 flex gap-3 md:gap-4 group cursor-pointer hover:bg-stone-800/70 transition-colors"
                   onClick={() => handleOpenModal(product)}
                 >
                   <img 
                     src={product.image} 
                     alt={product.name}
-                    className="w-20 h-20 object-cover rounded-lg"
+                    className="w-16 h-16 md:w-20 md:h-20 object-cover rounded-lg flex-shrink-0"
                   />
                   <div className="flex-1 min-w-0">
-                    <h4 className="text-white font-medium truncate group-hover:text-orange-500 transition-colors">{product.name}</h4>
-                    <p className="text-stone-400 text-sm truncate">{product.description}</p>
-                    <div className="flex items-center justify-between mt-2">
-                      <p className="text-orange-500 font-semibold">₹{product.price}</p>
+                    <h4 className="text-white font-medium text-sm md:text-base truncate group-hover:text-orange-500 transition-colors">{product.name}</h4>
+                    <p className="text-stone-400 text-xs md:text-sm truncate">{product.description}</p>
+                    <div className="flex items-center justify-between mt-2 gap-2">
+                      <p className="text-orange-500 font-semibold text-sm md:text-base">₹{product.price}</p>
                       <button
                         onClick={(e) => { e.stopPropagation(); addToCart({ ...product, quantity: 1 }); }}
-                        className="flex items-center gap-1 px-3 py-1 bg-orange-500 text-stone-950 text-xs font-semibold rounded-lg hover:bg-orange-400 transition-colors"
+                        className="flex items-center gap-1 px-2 md:px-3 py-1 bg-orange-500 text-stone-950 text-[10px] md:text-xs font-semibold rounded-lg hover:bg-orange-400 transition-colors"
                         title="Add to cart"
                       >
                         <ShoppingCart className="w-3 h-3" />
-                        Add
+                        <span className="hidden xs:inline">Add</span>
                       </button>
                     </div>
                   </div>
                   <button
                     onClick={(e) => { e.stopPropagation(); toggleFavorite(product.id); }}
-                    className="self-start p-2 text-stone-500 hover:text-red-500 transition-colors"
+                    className="self-start p-1.5 md:p-2 text-stone-500 hover:text-red-500 transition-colors flex-shrink-0"
                     title="Remove from favorites"
                   >
                     <Trash2 className="w-4 h-4" />
@@ -178,7 +178,7 @@ export const Account: React.FC = () => {
         {/* Sign Out Button */}
         <button
           onClick={handleSignOut}
-          className="w-full py-4 bg-stone-800 hover:bg-stone-700 text-white rounded-xl transition-colors duration-300 font-medium"
+          className="w-full py-3 md:py-4 bg-stone-800 hover:bg-stone-700 text-white rounded-lg md:rounded-xl transition-colors duration-300 font-medium text-sm md:text-base"
         >
           Sign Out
         </button>
