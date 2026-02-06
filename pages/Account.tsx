@@ -251,13 +251,12 @@ const ProductModal: React.FC<{
         </button>
 
         {/* Product Image */}
-        <div className="w-full md:w-1/2 h-[200px] md:h-auto relative overflow-hidden bg-stone-950">
+        <div className="w-full md:w-1/2 h-[200px] md:h-auto relative overflow-hidden bg-stone-900">
           <img 
             src={product.image} 
             alt={product.name} 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-transparent to-stone-950/40" />
           <button
             onClick={onToggleFavorite}
             className="absolute top-4 right-4 p-3 bg-stone-950/40 backdrop-blur-md rounded-full text-stone-100 border border-stone-100/10 hover:bg-orange-500 transition-all active:scale-90"

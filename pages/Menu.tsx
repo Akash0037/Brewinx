@@ -335,13 +335,12 @@ const CustomizationModal: React.FC<{
           <X className="w-8 h-8" />
         </button>
 
-        <div className="w-full md:w-1/2 h-[35%] md:h-full relative overflow-hidden bg-stone-950">
+        <div className="w-full md:w-1/2 h-[35%] md:h-full relative overflow-hidden bg-stone-900">
           <img 
             src={product.image} 
             alt={product.name} 
-            className="w-full h-full object-cover brightness-50 grayscale"
+            className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-transparent to-stone-950/40" />
         </div>
 
         <div className="w-full md:w-1/2 p-8 md:p-24 flex flex-col h-full overflow-y-auto scrollbar-hide" data-lenis-prevent>
