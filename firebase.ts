@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import { initializeApp, FirebaseApp } from "firebase/app";
+import { Analytics, getAnalytics } from "firebase/analytics";
 import { 
   getAuth, 
   signInWithEmailAndPassword, 
@@ -9,7 +9,8 @@ import {
   GoogleAuthProvider,
   signOut,
   onAuthStateChanged,
-  User
+  User,
+  Auth
 } from "firebase/auth";
 
 const firebaseConfig = {
@@ -22,25 +23,61 @@ const firebaseConfig = {
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID as string
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const auth = getAuth(app);
-const googleProvider = new GoogleAuthProvider();
+// Check if Firebase is configured
+const isFirebaseConfigured = firebaseConfig.projectId && firebaseConfig.apiKey;
 
-// Auth functions
-export const signInWithGoogle = () => signInWithPopup(auth, googleProvider);
+// Initialize Firebase only if configured
+let app: FirebaseApp | null = null;
+let analytics: Analytics | null = null;
+let auth: Auth | null = null;
+let googleProvider: GoogleAuthProvider | null = null;
 
-export const signInWithEmail = (email: string, password: string) => 
-  signInWithEmailAndPassword(auth, email, password);
+if (isFirebaseConfigured) {
+  app = initializeApp(firebaseConfig);
+  analytics = getAnalytics(app);
+  auth = getAuth(app);
+  googleProvider = new GoogleAuthProvider();
+} else {
+  console.warn('Firebase is not configured. Please add environment variables.');
+}
 
-export const signUpWithEmail = (email: string, password: string) => 
-  createUserWithEmailAndPassword(auth, email, password);
+// Auth functions with fallbacks
+export const signInWithGoogle = () => {
+  if (!auth || !googleProvider) {
+    return Promise.reject(new Error('Firebase not configured'));
+  }
+  return signInWithPopup(auth, googleProvider);
+};
 
-export const logOut = () => signOut(auth);
+export const signInWithEmail = (email: string, password: string) => {
+  if (!auth) {
+    return Promise.reject(new Error('Firebase not configured'));
+  }
+  return signInWithEmailAndPassword(auth, email, password);
+};
 
-export const onAuthChange = (callback: (user: User | null) => void) => 
-  onAuthStateChanged(auth, callback);
+export const signUpWithEmail = (email: string, password: string) => {
+  if (!auth) {
+    return Promise.reject(new Error('Firebase not configured'));
+  }
+  return createUserWithEmailAndPassword(auth, email, password);
+};
 
-export { auth, analytics };
+export const logOut = () => {
+  if (!auth) {
+    return Promise.reject(new Error('Firebase not configured'));
+  }
+  return signOut(auth);
+};
+
+export const onAuthChange = (callback: (user: User | null) => void) => {
+  if (!auth) {
+    // Call with null immediately if not configured
+    callback(null);
+    return () => {};
+  }
+  return onAuthStateChanged(auth, callback);
+};
+
+export { auth, analytics, isFirebaseConfigured };
 export type { User };
