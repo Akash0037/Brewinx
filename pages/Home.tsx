@@ -176,8 +176,8 @@ export const Home: React.FC = () => {
       </section>
 
       {/* Final Call to Action Section */}
-      <section className="py-40 md:py-60 px-6 relative overflow-hidden flex flex-col items-center text-center">
-        <div className="final-reveal space-y-10 md:space-y-12 max-w-4xl">
+      <section className="py-20 md:py-32 px-6 relative overflow-hidden flex flex-col items-center text-center">
+        <div className="final-reveal space-y-6 md:space-y-8 max-w-4xl">
            <div className="flex justify-center mb-6">
              <div className="flex flex-col items-center">
                 <span className="text-stone-100 font-serif text-4xl md:text-6xl tracking-[0.8em] uppercase font-bold pl-[0.8em]">Brewinx</span>
@@ -186,7 +186,7 @@ export const Home: React.FC = () => {
            </div>
            <h2 className="text-5xl md:text-[10rem] font-serif leading-none tracking-tighter italic">Ready for <br /><span className="text-orange-200">the Ritual?</span></h2>
            <p className="text-sm md:text-xl text-stone-500 font-light italic">Your sensory journey begins at the first sip.</p>
-           <div className="pt-8 md:pt-12">
+           <div className="pt-4 md:pt-6">
              <Link 
                to="/menu" 
                className="group relative inline-flex items-center gap-6 px-10 md:px-14 py-5 md:py-7 bg-stone-100 text-stone-950 font-black uppercase tracking-[0.4em] text-[10px] rounded-full overflow-hidden transition-all duration-700 hover:bg-orange-500 hover:text-white"
@@ -202,6 +202,120 @@ export const Home: React.FC = () => {
         <div className="absolute inset-0 pointer-events-none -z-10">
            <Wind className="absolute top-1/4 left-1/4 w-24 md:w-32 h-24 md:h-32 text-orange-500/5 animate-pulse" />
            <Wind className="absolute bottom-1/4 right-1/4 w-32 md:w-40 h-32 md:h-40 text-orange-500/5 animate-pulse" />
+        </div>
+      </section>
+
+      {/* Testimonials / Philosophy Section */}
+      <section className="py-16 md:py-24 px-6 md:px-16 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12 md:mb-16">
+            <span className="text-orange-500 text-[10px] font-black uppercase tracking-[0.6em]">Voices from the Void</span>
+            <h2 className="text-4xl md:text-7xl font-serif italic tracking-tighter mt-6">What They Say</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+            {/* Testimonial 1 */}
+            <div className="group p-8 md:p-12 bg-stone-900/30 border border-stone-100/5 hover:border-orange-500/20 transition-all duration-700">
+              <div className="text-6xl md:text-8xl font-serif text-orange-500/20 leading-none mb-6">"</div>
+              <p className="text-stone-400 text-sm md:text-base leading-relaxed mb-8 italic">
+                The darkest roast I've ever tasted, yet somehow the most nuanced. Brewinx doesn't make coffee—they craft experiences.
+              </p>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-stone-800 flex items-center justify-center text-orange-500 font-serif text-xl">A</div>
+                <div>
+                  <p className="text-stone-100 font-medium text-sm">Alexandra Chen</p>
+                  <p className="text-stone-600 text-[10px] uppercase tracking-widest">Coffee Enthusiast</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Testimonial 2 */}
+            <div className="group p-8 md:p-12 bg-stone-900/30 border border-stone-100/5 hover:border-orange-500/20 transition-all duration-700 md:translate-y-8">
+              <div className="text-6xl md:text-8xl font-serif text-orange-500/20 leading-none mb-6">"</div>
+              <p className="text-stone-400 text-sm md:text-base leading-relaxed mb-8 italic">
+                Every morning feels like a sacred ritual now. The aroma alone transports you somewhere ancient and profound.
+              </p>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-stone-800 flex items-center justify-center text-orange-500 font-serif text-xl">M</div>
+                <div>
+                  <p className="text-stone-100 font-medium text-sm">Marcus Webb</p>
+                  <p className="text-stone-600 text-[10px] uppercase tracking-widest">Barista & Roaster</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Testimonial 3 */}
+            <div className="group p-8 md:p-12 bg-stone-900/30 border border-stone-100/5 hover:border-orange-500/20 transition-all duration-700">
+              <div className="text-6xl md:text-8xl font-serif text-orange-500/20 leading-none mb-6">"</div>
+              <p className="text-stone-400 text-sm md:text-base leading-relaxed mb-8 italic">
+                I thought I knew coffee. Then I discovered Brewinx. It's not just a drink—it's a philosophy in a cup.
+              </p>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-stone-800 flex items-center justify-center text-orange-500 font-serif text-xl">S</div>
+                <div>
+                  <p className="text-stone-100 font-medium text-sm">Sofia Müller</p>
+                  <p className="text-stone-600 text-[10px] uppercase tracking-widest">Café Owner, Berlin</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats / Numbers Section */}
+      <section className="py-12 md:py-16 px-6 border-y border-stone-100/5">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-8">
+          <div className="text-center space-y-4">
+            <div className="text-5xl md:text-7xl font-serif italic text-stone-100">12+</div>
+            <p className="text-[10px] md:text-xs uppercase tracking-[0.4em] text-stone-600">Countries Sourced</p>
+          </div>
+          <div className="text-center space-y-4">
+            <div className="text-5xl md:text-7xl font-serif italic text-orange-500">50K</div>
+            <p className="text-[10px] md:text-xs uppercase tracking-[0.4em] text-stone-600">Rituals Completed</p>
+          </div>
+          <div className="text-center space-y-4">
+            <div className="text-5xl md:text-7xl font-serif italic text-stone-100">93°</div>
+            <p className="text-[10px] md:text-xs uppercase tracking-[0.4em] text-stone-600">Perfect Temperature</p>
+          </div>
+          <div className="text-center space-y-4">
+            <div className="text-5xl md:text-7xl font-serif italic text-orange-500">∞</div>
+            <p className="text-[10px] md:text-xs uppercase tracking-[0.4em] text-stone-600">Passion for Craft</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Instagram / Social Feed Section */}
+      <section className="py-16 md:py-24 px-6 md:px-16">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
+            <div>
+              <span className="text-orange-500 text-[10px] font-black uppercase tracking-[0.6em]">@Brewinx</span>
+              <h2 className="text-4xl md:text-6xl font-serif italic tracking-tighter mt-4">Join the Ritual</h2>
+            </div>
+            <a href="#" className="text-stone-500 text-xs uppercase tracking-[0.3em] hover:text-orange-500 transition-colors flex items-center gap-2 group">
+              Follow on Instagram
+              <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="aspect-square overflow-hidden group cursor-pointer relative">
+              <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=400&q=60" alt="Instagram" className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" loading="lazy" />
+              <div className="absolute inset-0 bg-stone-950/60 group-hover:bg-transparent transition-all duration-500" />
+            </div>
+            <div className="aspect-square overflow-hidden group cursor-pointer relative">
+              <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=400&q=60" alt="Instagram" className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" loading="lazy" />
+              <div className="absolute inset-0 bg-stone-950/60 group-hover:bg-transparent transition-all duration-500" />
+            </div>
+            <div className="aspect-square overflow-hidden group cursor-pointer relative">
+              <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=400&q=60" alt="Instagram" className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" loading="lazy" />
+              <div className="absolute inset-0 bg-stone-950/60 group-hover:bg-transparent transition-all duration-500" />
+            </div>
+            <div className="aspect-square overflow-hidden group cursor-pointer relative">
+              <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=400&q=60" alt="Instagram" className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" loading="lazy" />
+              <div className="absolute inset-0 bg-stone-950/60 group-hover:bg-transparent transition-all duration-500" />
+            </div>
+          </div>
         </div>
       </section>
 

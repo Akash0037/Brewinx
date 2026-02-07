@@ -74,7 +74,7 @@ export const Footer: React.FC = () => {
   }, []);
 
   return (
-    <footer ref={footerRef} className="bg-stone-950 pt-48 pb-12 px-6 md:px-24 border-t border-stone-100/5 relative overflow-hidden">
+    <footer ref={footerRef} className="bg-stone-950 pt-24 pb-12 px-6 md:px-24 border-t border-stone-100/5 relative overflow-hidden">
       
       {/* Particle System Layer */}
       <div ref={particlesRef} className="absolute inset-0 pointer-events-none z-0">
@@ -88,14 +88,14 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* Tier 1: The Invitation (Newsletter) */}
-      <div className="max-w-[1600px] mx-auto mb-48 relative z-10">
-        <div className="flex flex-col lg:flex-row justify-between items-start gap-24">
-          <div className="footer-reveal space-y-10 max-w-3xl">
+      <div className="max-w-[1600px] mx-auto mb-16 relative z-10">
+        <div className="flex flex-col lg:flex-row justify-between items-start gap-12">
+          <div className="footer-reveal space-y-6 max-w-3xl">
             <div className="flex items-center gap-6">
               <span className="text-orange-500 font-sans text-[10px] tracking-[0.8em] uppercase font-black">Dispatches from the Void</span>
               <div className="flex-1 h-px bg-stone-100/10" />
             </div>
-            <h2 className="text-7xl md:text-[9rem] font-serif italic tracking-tighter leading-[0.8] text-stone-100">
+            <h2 className="text-5xl md:text-7xl font-serif italic tracking-tighter leading-[0.8] text-stone-100">
               Stay <span className="text-stone-700">Brewed.</span>
             </h2>
             <p className="text-stone-500 font-sans text-xs md:text-sm tracking-[0.2em] uppercase leading-loose max-w-lg">
@@ -103,12 +103,12 @@ export const Footer: React.FC = () => {
             </p>
           </div>
           
-          <div className="footer-reveal w-full lg:w-1/3 pt-12">
+          <div className="footer-reveal w-full lg:w-1/3 pt-6">
             <div className="relative group">
-              <label className="block text-[8px] font-bold tracking-[0.5em] text-stone-600 uppercase mb-4 transition-colors group-focus-within:text-orange-500">
+              <label className="block text-[8px] font-bold tracking-[0.5em] text-stone-600 uppercase mb-3 transition-colors group-focus-within:text-orange-500">
                 Identification / Email
               </label>
-              <div className="relative border-b border-stone-100/10 pb-6 group-focus-within:border-orange-500 transition-all duration-1000">
+              <div className="relative border-b border-stone-100/10 pb-4 group-focus-within:border-orange-500 transition-all duration-1000">
                 <input 
                   type="email" 
                   placeholder="VOID@DOMAIN.COM" 
@@ -125,12 +125,10 @@ export const Footer: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* Tier 2: The Directory (Grid) */}
-      <div className="max-w-[1600px] mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-y-24 gap-x-12 mb-56 relative z-10 border-t border-stone-100/5 pt-24">
+      <div className="max-w-[1600px] mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-y-12 gap-x-8 mb-16 relative z-10 border-t border-stone-100/5 pt-12">
         
         {/* Brand Philosophy */}
-        <div className="footer-reveal col-span-2 lg:col-span-2 space-y-10">
+        <div className="footer-reveal col-span-2 lg:col-span-2 space-y-6">
           <Link to="/" className="text-3xl font-serif font-black tracking-tighter text-stone-100 block">
             BREWINX<span className="text-orange-500">.</span>
           </Link>
@@ -140,14 +138,14 @@ export const Footer: React.FC = () => {
           <div className="flex gap-6 text-stone-700">
              <Coffee className="w-5 h-5" />
              <div className="w-px h-5 bg-stone-100/10" />
-             <span className="text-[10px] tracking-widest uppercase font-bold">Est. 2024</span>
+             <span className="text-[15px] tracking-widest uppercase font-bold">Est. 2024</span>
           </div>
         </div>
 
         {/* Links Column 1 */}
-        <div className="footer-reveal space-y-10">
+        <div className="footer-reveal space-y-6">
           <h4 className="text-[10px] font-sans tracking-[0.6em] text-orange-500 font-black uppercase">Navigate</h4>
-          <ul className="space-y-6 text-[11px] font-sans tracking-[0.4em] text-stone-400 uppercase">
+          <ul className="space-y-4 text-[11px] font-sans tracking-[0.4em] text-stone-400 uppercase">
             <li><Link to="/" className="hover:text-stone-100 transition-colors flex items-center gap-2">Home</Link></li>
             <li><Link to="/menu" className="hover:text-stone-100 transition-colors flex items-center gap-2">Collection</Link></li>
             <li><Link to="/about" className="hover:text-stone-100 transition-colors flex items-center gap-2">Alchemy</Link></li>
@@ -156,9 +154,9 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Links Column 2 */}
-        <div className="footer-reveal space-y-10">
+        <div className="footer-reveal space-y-6">
           <h4 className="text-[10px] font-sans tracking-[0.6em] text-orange-500 font-black uppercase">Presence</h4>
-          <div className="space-y-6">
+          <div className="space-y-4">
             <p className="text-[11px] font-sans tracking-[0.4em] text-stone-400 uppercase leading-relaxed">
               102 Obsidian Lane<br/>
               Manhattan, NY<br/>
@@ -169,9 +167,9 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Links Column 3 */}
-        <div className="footer-reveal space-y-10">
+        <div className="footer-reveal space-y-6">
           <h4 className="text-[10px] font-sans tracking-[0.6em] text-orange-500 font-black uppercase">Sync</h4>
-          <ul className="space-y-6 text-[11px] font-sans tracking-[0.4em] text-stone-400 uppercase">
+          <ul className="space-y-4 text-[11px] font-sans tracking-[0.4em] text-stone-400 uppercase">
             <li><a href="#" className="hover:text-orange-500 transition-colors">Instagram</a></li>
             <li><a href="#" className="hover:text-orange-500 transition-colors">Twitter</a></li>
             <li><a href="#" className="hover:text-orange-500 transition-colors">Spotify</a></li>
@@ -201,10 +199,9 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* Tier 3: The Monolith (Giant Branding) */}
-      <div ref={monolithRef} className="relative select-none pointer-events-none mb-32 z-10">
+      <div ref={monolithRef} className="relative select-none pointer-events-none mb-2 z-10">
         <div className="text-[25vw] leading-none font-serif font-black italic tracking-tighter flex justify-center overflow-hidden">
           <span className="text-stone-100 opacity-[0.02]">BREWINX</span>
-          {/* Outlined version for depth */}
           <span 
             className="absolute inset-0 flex justify-center text-transparent" 
             style={{ WebkitTextStroke: '1px rgba(245, 245, 244, 0.04)' }}>
@@ -214,7 +211,7 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* Footer Bottom Meta */}
-      <div className="max-w-[1600px] mx-auto pt-16 flex flex-col md:flex-row justify-between items-center gap-12 border-t border-stone-100/5 relative z-10">
+      <div className="max-w-[1600px] mx-auto pt-4 flex flex-col md:flex-row justify-between items-center gap-12 border-t border-stone-100/5 relative z-10">
         <div className="flex items-center gap-10">
           <div className="flex items-center gap-4">
              <div className="w-2 h-2 bg-orange-500 rounded-full" />
