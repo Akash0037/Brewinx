@@ -118,6 +118,76 @@ export const PRODUCTS: Product[] = [
     image: '/images/menu/cold-brew.jpeg'
   },
   {
+    id: 'ic1',
+    name: 'Iced Coffee',
+    description: 'Chilled brewed coffee served over ice for a refreshing kick.',
+    price: 200,
+    category: 'Cold',
+    image: '/images/menu/Iced_Coffee.jpg',
+    options: {
+      milk: ['None', 'Oat', 'Almond', 'Whole'],
+      sweetness: ['None', 'Light', 'Regular']
+    }
+  },
+  {
+    id: 'ia1',
+    name: 'Iced Americano',
+    description: 'Bold espresso shots poured over ice and cold water.',
+    price: 220,
+    category: 'Cold',
+    image: '/images/menu/Iced_Americano.jpeg',
+    options: {
+      sweetness: ['None', 'Light', 'Regular']
+    }
+  },
+  {
+    id: 'iv1',
+    name: 'Iced Vietnamese Coffee',
+    description: 'Strong dark roast coffee with sweetened condensed milk over ice.',
+    price: 280,
+    category: 'Cold',
+    image: '/images/menu/Iced_Vietnamese_Coffee.jpeg',
+    options: {
+      sweetness: ['Light', 'Regular', 'Extra']
+    }
+  },
+  {
+    id: 'icm1',
+    name: 'Iced Caramel Macchiato',
+    description: 'Vanilla-infused milk with espresso and caramel drizzle over ice.',
+    price: 320,
+    category: 'Cold',
+    image: '/images/menu/Iced_Caramel_Macchiato.jpeg',
+    options: {
+      milk: ['Whole', 'Oat', 'Almond'],
+      sweetness: ['Light', 'Regular', 'Extra']
+    }
+  },
+  {
+    id: 'ise1',
+    name: 'Iced Shaken Espresso',
+    description: 'Espresso shaken with ice and a touch of sweetness for a frothy finish.',
+    price: 280,
+    category: 'Cold',
+    image: '/images/menu/Iced_Shaken_Espresso.jpeg',
+    options: {
+      milk: ['None', 'Oat', 'Almond', 'Whole'],
+      sweetness: ['None', 'Light', 'Regular']
+    }
+  },
+  {
+    id: 'wc1',
+    name: 'Whipped Coffee (Dalgona)',
+    description: 'Creamy whipped coffee foam over iced milk - the viral sensation.',
+    price: 300,
+    category: 'Cold',
+    image: '/images/menu/Whipped_Coffee_(Dalgona).jpeg',
+    options: {
+      milk: ['Whole', 'Oat', 'Almond'],
+      sweetness: ['Light', 'Regular']
+    }
+  },
+  {
     id: 'fw1',
     name: 'Flat White',
     description: 'Espresso with microfoam for a velvety texture.',

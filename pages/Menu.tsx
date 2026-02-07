@@ -35,6 +35,12 @@ const getProductNotes = (product: Product): string[] => {
     'Flat White': ['Velvety', 'Microfoam', 'Smooth'],
     // Cold
     'Cold Brew': ['Smooth', 'Refreshing', 'Bold'],
+    'Iced Coffee': ['Chilled', 'Crisp', 'Refreshing'],
+    'Iced Americano': ['Bold', 'Icy', 'Clean'],
+    'Iced Vietnamese Coffee': ['Sweet', 'Creamy', 'Bold'],
+    'Iced Caramel Macchiato': ['Caramel', 'Vanilla', 'Layered'],
+    'Iced Shaken Espresso': ['Frothy', 'Shaken', 'Intense'],
+    'Whipped Coffee (Dalgona)': ['Whipped', 'Creamy', 'Viral'],
     // Bakery
     'Butter Croissant': ['Flaky', 'Buttery', 'Fresh'],
     'Blueberry Muffin': ['Fruity', 'Moist', 'Sweet'],
