@@ -13,71 +13,53 @@ import {
   Auth
 } from "firebase/auth";
 
+// Firebase configuration with fallback values
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY as string,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN as string,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID as string,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET as string,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID as string,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID as string,
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID as string
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "AIzaSyBWg0CfRIX9qkICZGWYbCHgXzmkpbv8w-A",
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "brewinx-61d03.firebaseapp.com",
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "brewinx-61d03",
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "brewinx-61d03.firebasestorage.app",
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "1059335085964",
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || "1:1059335085964:web:a471a4c327b7fc1fe680a9",
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID || "G-RY2G5SNWRG"
 };
 
-// Check if Firebase is configured
-const isFirebaseConfigured = firebaseConfig.projectId && firebaseConfig.apiKey;
-
-// Initialize Firebase only if configured
-let app: FirebaseApp | null = null;
+// Initialize Firebase
+const app: FirebaseApp = initializeApp(firebaseConfig);
 let analytics: Analytics | null = null;
-let auth: Auth | null = null;
-let googleProvider: GoogleAuthProvider | null = null;
 
-if (isFirebaseConfigured) {
-  app = initializeApp(firebaseConfig);
-  analytics = getAnalytics(app);
-  auth = getAuth(app);
-  googleProvider = new GoogleAuthProvider();
-} else {
-  console.warn('Firebase is not configured. Please add environment variables.');
+// Only initialize analytics in browser environment
+if (typeof window !== 'undefined') {
+  try {
+    analytics = getAnalytics(app);
+  } catch (e) {
+    console.warn('Analytics initialization failed:', e);
+  }
 }
 
-// Auth functions with fallbacks
+const auth: Auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
+
+// Auth functions
 export const signInWithGoogle = () => {
-  if (!auth || !googleProvider) {
-    return Promise.reject(new Error('Firebase not configured'));
-  }
   return signInWithPopup(auth, googleProvider);
 };
 
 export const signInWithEmail = (email: string, password: string) => {
-  if (!auth) {
-    return Promise.reject(new Error('Firebase not configured'));
-  }
   return signInWithEmailAndPassword(auth, email, password);
 };
 
 export const signUpWithEmail = (email: string, password: string) => {
-  if (!auth) {
-    return Promise.reject(new Error('Firebase not configured'));
-  }
   return createUserWithEmailAndPassword(auth, email, password);
 };
 
 export const logOut = () => {
-  if (!auth) {
-    return Promise.reject(new Error('Firebase not configured'));
-  }
   return signOut(auth);
 };
 
 export const onAuthChange = (callback: (user: User | null) => void) => {
-  if (!auth) {
-    // Call with null immediately if not configured
-    callback(null);
-    return () => {};
-  }
   return onAuthStateChanged(auth, callback);
 };
 
-export { auth, analytics, isFirebaseConfigured };
+export { auth, analytics };
 export type { User };
