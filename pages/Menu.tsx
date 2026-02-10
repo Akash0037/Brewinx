@@ -135,19 +135,19 @@ export const Menu: React.FC = () => {
   };
 
   return (
-    <div className="bg-stone-950 pt-32 md:pt-48 min-h-screen text-stone-100 px-6 md:px-16 pb-0">
-      <header ref={headerRef} className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-12">
-        <div className="space-y-4">
-          <span className="menu-header-item block text-orange-500 font-sans text-[10px] tracking-[0.8em] uppercase font-bold opacity-60">The Collection</span>
-          <h1 className="menu-header-item text-6xl md:text-[10rem] font-serif italic tracking-tighter leading-[0.85]">Rituals of<br/>Extraction</h1>
+    <div className="bg-stone-950 pt-24 md:pt-48 min-h-screen text-stone-100 px-4 sm:px-6 md:px-16 pb-0">
+      <header ref={headerRef} className="mb-12 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-12">
+        <div className="space-y-2 md:space-y-4">
+          <span className="menu-header-item block text-orange-500 font-sans text-[8px] md:text-[10px] tracking-[0.5em] md:tracking-[0.8em] uppercase font-bold opacity-60">The Collection</span>
+          <h1 className="menu-header-item text-4xl sm:text-5xl md:text-[10rem] font-serif italic tracking-tighter leading-[0.85]">Rituals of<br/>Extraction</h1>
         </div>
         
-        <nav className="menu-header-item flex flex-wrap gap-2">
+        <nav className="menu-header-item flex flex-wrap gap-1.5 md:gap-2">
           {categories.map(cat => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`relative px-8 py-3 text-[10px] font-sans tracking-[0.3em] uppercase transition-all duration-700 overflow-hidden ${
+              className={`relative px-4 sm:px-6 md:px-8 py-2 md:py-3 text-[9px] md:text-[10px] font-sans tracking-[0.2em] md:tracking-[0.3em] uppercase transition-all duration-700 overflow-hidden ${
                 activeCategory === cat 
                 ? 'text-stone-950' 
                 : 'text-stone-500 hover:text-stone-100'
@@ -162,7 +162,7 @@ export const Menu: React.FC = () => {
         </nav>
       </header>
 
-      <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-24 mb-40">
+      <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 sm:gap-x-8 md:gap-x-12 gap-y-12 sm:gap-y-16 md:gap-y-24 mb-20 md:mb-40">
         {filteredProducts.map(product => (
           <ProductCard 
             key={product.id} 
@@ -238,27 +238,27 @@ const ProductCard: React.FC<{
         />
         
         {/* Overlay Badges */}
-        <div className="absolute inset-x-6 top-6 flex justify-between items-start pointer-events-none">
-          <div className="flex flex-col gap-2">
+        <div className="absolute inset-x-3 sm:inset-x-6 top-3 sm:top-6 flex justify-between items-start pointer-events-none">
+          <div className="flex flex-col gap-1.5 sm:gap-2">
             {product.notes?.map((note, i) => (
-              <span key={i} className="px-3 py-1 bg-stone-950/40 backdrop-blur-md text-[8px] tracking-[0.3em] uppercase text-stone-300 border border-stone-100/10 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500" style={{ transitionDelay: `${i * 50}ms` }}>
+              <span key={i} className="px-2 sm:px-3 py-0.5 sm:py-1 bg-stone-950/40 backdrop-blur-md text-[7px] sm:text-[8px] tracking-[0.2em] sm:tracking-[0.3em] uppercase text-stone-300 border border-stone-100/10 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500" style={{ transitionDelay: `${i * 50}ms` }}>
                 {note}
               </span>
             ))}
           </div>
           <button
             onClick={(e) => { e.stopPropagation(); onToggleFav(); }}
-            className="pointer-events-auto p-3 bg-stone-950/40 backdrop-blur-md rounded-full text-stone-100 border border-stone-100/10 hover:bg-orange-500 transition-all active:scale-90"
+            className="pointer-events-auto p-2 sm:p-3 bg-stone-950/40 backdrop-blur-md rounded-full text-stone-100 border border-stone-100/10 hover:bg-orange-500 transition-all active:scale-90"
           >
-            <Heart className={`w-3.5 h-3.5 ${isFav ? 'fill-current text-stone-950' : ''}`} />
+            <Heart className={`w-3 h-3 sm:w-3.5 sm:h-3.5 ${isFav ? 'fill-current text-stone-950' : ''}`} />
           </button>
         </div>
 
         {/* Quick Add Section */}
-        <div className="absolute inset-x-0 bottom-0 p-8 flex justify-between items-end bg-gradient-to-t from-stone-950/80 to-transparent">
-          <div className="space-y-4 w-full">
-            <div className="flex items-center gap-3">
-              <span className="text-[9px] tracking-widest uppercase text-stone-400">Intensity</span>
+        <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6 md:p-8 flex justify-between items-end bg-gradient-to-t from-stone-950/80 to-transparent">
+          <div className="space-y-3 sm:space-y-4 w-full">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <span className="text-[8px] sm:text-[9px] tracking-widest uppercase text-stone-400">Intensity</span>
               <div className="flex-1 h-0.5 bg-stone-100/10 relative overflow-hidden">
                 <div 
                   className="absolute inset-y-0 left-0 bg-orange-500/60 transition-all duration-1000 ease-expo"
@@ -268,22 +268,22 @@ const ProductCard: React.FC<{
             </div>
             <button 
               onClick={(e) => { e.stopPropagation(); onAddToCart(); }}
-              className="w-full h-14 bg-stone-100 text-stone-950 flex items-center justify-center gap-4 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700 ease-expo hover:bg-orange-500"
+              className="w-full h-10 sm:h-12 md:h-14 bg-stone-100 text-stone-950 flex items-center justify-center gap-2 sm:gap-4 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700 ease-expo hover:bg-orange-500"
             >
-              <Plus className="w-5 h-5" />
-              <span className="text-[10px] font-sans font-bold tracking-[0.4em] uppercase">Add to Ritual</span>
+              <Plus className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span className="text-[8px] sm:text-[9px] md:text-[10px] font-sans font-bold tracking-[0.3em] sm:tracking-[0.4em] uppercase">Add to Ritual</span>
             </button>
           </div>
         </div>
       </div>
       
-      <div className="mt-10 flex justify-between items-start">
-        <div className="space-y-2">
-          <h3 className="text-3xl md:text-4xl font-serif italic tracking-tighter group-hover:text-orange-500 transition-colors duration-700">{product.name}</h3>
-          <p className="text-[9px] font-sans tracking-[0.5em] text-stone-600 uppercase">{product.category}</p>
+      <div className="mt-4 sm:mt-6 md:mt-10 flex justify-between items-start gap-2">
+        <div className="space-y-1 sm:space-y-2 flex-1 min-w-0">
+          <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-serif italic tracking-tighter group-hover:text-orange-500 transition-colors duration-700 truncate">{product.name}</h3>
+          <p className="text-[8px] sm:text-[9px] font-sans tracking-[0.3em] sm:tracking-[0.5em] text-stone-600 uppercase">{product.category}</p>
         </div>
-        <div className="text-2xl font-serif flex flex-col items-end">
-          <span className="text-stone-400/40 text-[10px] font-sans tracking-widest uppercase mb-1">Cost</span>
+        <div className="text-lg sm:text-xl md:text-2xl font-serif flex flex-col items-end flex-shrink-0">
+          <span className="text-stone-400/40 text-[8px] sm:text-[10px] font-sans tracking-widest uppercase mb-0.5 sm:mb-1">Cost</span>
           ₹{product.price}
         </div>
       </div>
@@ -327,21 +327,21 @@ const CustomizationModal: React.FC<{
   return (
     <div 
       ref={overlayRef}
-      className="modal-overlay fixed inset-0 z-[100] flex items-center justify-center p-6 md:p-12 bg-stone-950/98 backdrop-blur-3xl"
+      className="modal-overlay fixed inset-0 z-[100] flex items-center justify-center p-2 sm:p-4 md:p-12 bg-stone-950/98 backdrop-blur-3xl"
       onClick={(e) => e.target === overlayRef.current && onClose()}
     >
       <div 
         ref={modalRef}
-        className="modal-content relative w-full max-w-7xl h-[85vh] md:h-[80vh] bg-stone-900/40 border border-stone-100/10 flex flex-col md:flex-row overflow-hidden"
+        className="modal-content relative w-full max-w-7xl h-[95vh] sm:h-[90vh] md:h-[80vh] bg-stone-900/40 border border-stone-100/10 flex flex-col md:flex-row overflow-hidden rounded-lg md:rounded-none"
       >
         <button 
           onClick={onClose}
-          className="absolute top-8 right-8 z-[110] p-4 text-stone-100 hover:text-orange-500 transition-colors"
+          className="absolute top-3 right-3 sm:top-6 sm:right-6 md:top-8 md:right-8 z-[110] p-2 sm:p-3 md:p-4 text-stone-100 hover:text-orange-500 transition-colors bg-stone-950/50 md:bg-transparent rounded-full"
         >
-          <X className="w-8 h-8" />
+          <X className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8" />
         </button>
 
-        <div className="w-full md:w-1/2 h-[35%] md:h-full relative overflow-hidden bg-stone-900">
+        <div className="w-full md:w-1/2 h-[30%] sm:h-[35%] md:h-full relative overflow-hidden bg-stone-900 flex-shrink-0">
           <img 
             src={product.image} 
             alt={product.name} 
@@ -349,27 +349,27 @@ const CustomizationModal: React.FC<{
           />
         </div>
 
-        <div className="w-full md:w-1/2 p-8 md:p-24 flex flex-col h-full overflow-y-auto scrollbar-hide" data-lenis-prevent>
+        <div className="w-full md:w-1/2 p-4 sm:p-6 md:p-12 lg:p-24 flex flex-col flex-1 overflow-y-auto scrollbar-hide" data-lenis-prevent>
           {/* Fix: Callback ref must return void, and using stable indices for GSAP */}
-          <div ref={el => { if (el) bloomItems.current[0] = el; }} className="mb-20">
-            <span className="text-orange-500 font-sans text-xs tracking-[0.8em] uppercase font-bold opacity-60">Fine-Tune Ritual</span>
-            <h2 className="text-5xl md:text-8xl font-serif italic mt-6 leading-none tracking-tighter">{product.name}</h2>
-            <p className="mt-8 text-stone-500 text-xs md:text-sm font-sans tracking-widest uppercase leading-loose max-w-sm">
+          <div ref={el => { if (el) bloomItems.current[0] = el; }} className="mb-8 sm:mb-12 md:mb-20">
+            <span className="text-orange-500 font-sans text-[10px] sm:text-xs tracking-[0.5em] sm:tracking-[0.8em] uppercase font-bold opacity-60">Fine-Tune Ritual</span>
+            <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-serif italic mt-3 sm:mt-4 md:mt-6 leading-none tracking-tighter">{product.name}</h2>
+            <p className="mt-4 sm:mt-6 md:mt-8 text-stone-500 text-[10px] sm:text-xs md:text-sm font-sans tracking-wider sm:tracking-widest uppercase leading-relaxed sm:leading-loose max-w-sm">
               {product.description}
             </p>
           </div>
 
-          <div className="flex-1 space-y-16">
+          <div className="flex-1 space-y-8 sm:space-y-12 md:space-y-16">
             {product.options && Object.entries(product.options).map(([key, vals], idx) => (
               /* Fix: Callback ref must return void, and using stable indices for GSAP */
-              <div key={key} ref={el => { if (el) bloomItems.current[idx + 1] = el; }} className="space-y-8">
-                <h4 className="text-[10px] font-sans tracking-[0.6em] uppercase text-stone-600 font-bold">{key}</h4>
-                <div className="flex flex-wrap gap-4">
+              <div key={key} ref={el => { if (el) bloomItems.current[idx + 1] = el; }} className="space-y-4 sm:space-y-6 md:space-y-8">
+                <h4 className="text-[9px] sm:text-[10px] font-sans tracking-[0.4em] sm:tracking-[0.6em] uppercase text-stone-600 font-bold">{key}</h4>
+                <div className="flex flex-wrap gap-2 sm:gap-3 md:gap-4">
                   {(vals as string[]).map(v => (
                     <button
                       key={v}
                       onClick={() => setSelections(prev => ({ ...prev, [key]: v }))}
-                      className={`px-10 py-4 border text-[10px] font-sans tracking-[0.4em] uppercase transition-all duration-500 relative overflow-hidden group ${
+                      className={`px-4 sm:px-6 md:px-10 py-2 sm:py-3 md:py-4 border text-[9px] sm:text-[10px] font-sans tracking-[0.3em] sm:tracking-[0.4em] uppercase transition-all duration-500 relative overflow-hidden group ${
                         selections[key] === v 
                         ? 'bg-stone-100 border-stone-100 text-stone-950 font-bold' 
                         : 'border-stone-100/10 text-stone-500 hover:border-stone-100/40 hover:text-stone-100'
@@ -387,35 +387,35 @@ const CustomizationModal: React.FC<{
 
             {/* Quantity Selector Section */}
             {/* Fix: Callback ref must return void, and using stable indices for GSAP */}
-            <div ref={el => { if (el) bloomItems.current[numOptions + 1] = el; }} className="space-y-8">
-              <h4 className="text-[10px] font-sans tracking-[0.6em] uppercase text-stone-600 font-bold">Volume</h4>
-              <div className="flex items-center gap-10 bg-stone-950/40 border border-stone-100/10 w-fit rounded-full px-8 py-4">
+            <div ref={el => { if (el) bloomItems.current[numOptions + 1] = el; }} className="space-y-4 sm:space-y-6 md:space-y-8">
+              <h4 className="text-[9px] sm:text-[10px] font-sans tracking-[0.4em] sm:tracking-[0.6em] uppercase text-stone-600 font-bold">Volume</h4>
+              <div className="flex items-center gap-6 sm:gap-8 md:gap-10 bg-stone-950/40 border border-stone-100/10 w-fit rounded-full px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4">
                 <button 
                   onClick={() => setQuantity(q => Math.max(1, q - 1))}
                   className="text-stone-400 hover:text-orange-500 transition-colors p-1"
                 >
-                  <Minus className="w-5 h-5" />
+                  <Minus className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
-                <span className="text-xl font-serif italic min-w-[1.5rem] text-center">{quantity}</span>
+                <span className="text-lg sm:text-xl font-serif italic min-w-[1.5rem] text-center">{quantity}</span>
                 <button 
                   onClick={() => setQuantity(q => q + 1)}
                   className="text-stone-400 hover:text-orange-500 transition-colors p-1"
                 >
-                  <Plus className="w-5 h-5" />
+                  <Plus className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
               </div>
             </div>
           </div>
 
           {/* Fix: Callback ref must return void, and using stable indices for GSAP */}
-          <div ref={el => { if (el) bloomItems.current[numOptions + 2] = el; }} className="mt-20 pt-12 border-t border-stone-100/5 flex items-center justify-between">
+          <div ref={el => { if (el) bloomItems.current[numOptions + 2] = el; }} className="mt-8 sm:mt-12 md:mt-20 pt-6 sm:pt-8 md:pt-12 border-t border-stone-100/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6">
             <div className="space-y-1">
-              <span className="block text-[10px] font-sans tracking-widest text-stone-600 uppercase">Total Intensity</span>
-              <div className="text-4xl md:text-6xl font-serif italic">₹{product.price * quantity}</div>
+              <span className="block text-[9px] sm:text-[10px] font-sans tracking-wider sm:tracking-widest text-stone-600 uppercase">Total Intensity</span>
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-serif italic">₹{product.price * quantity}</div>
             </div>
             <button 
               onClick={handleAdd}
-              className="group relative px-12 md:px-16 py-6 md:py-7 overflow-hidden border border-orange-500 text-orange-500 font-sans font-bold tracking-[0.5em] md:tracking-[0.6em] uppercase text-[9px] md:text-[10px] hover:text-stone-950 transition-colors flex items-center gap-4"
+              className="group relative w-full sm:w-auto px-6 sm:px-10 md:px-16 py-4 sm:py-5 md:py-7 overflow-hidden border border-orange-500 text-orange-500 font-sans font-bold tracking-[0.3em] sm:tracking-[0.5em] md:tracking-[0.6em] uppercase text-[9px] md:text-[10px] hover:text-stone-950 transition-colors flex items-center justify-center sm:justify-start gap-2 sm:gap-3 md:gap-4"
             >
               <Plus className="w-4 h-4 md:w-5 md:h-5 relative z-10 group-hover:rotate-90 transition-transform duration-500" />
               <span className="relative z-10">Add to Ritual</span>
